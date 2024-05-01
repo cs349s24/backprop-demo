@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{align*}
+\dfrac{dc}{db} &= 2 \\
+\dfrac{db}{dp} &= 4 \\
+\dfrac{dc}{dp} &= \dfrac{dc}{db} \cdot \dfrac{db}{dp} = 8
+\end{align*}
+
+
+% Write out derivatives for W2
+\begin{align*}
+\dfrac{\partial L}{\partial W_2} &= \dfrac{\partial L}{\partial \sigma(W_2 \times \sigma(W_1 \times X))}
+\cdot \dfrac{\partial \sigma(W_2 \times \sigma(W_1 \times X))}{\partial W_2 \times \sigma(W_1 \times X)}
+\cdot \dfrac{\partial W_2 \times \sigma(W_1 \times X)}{\partial W_2}
+\end{align*}
+
+% Compute W2 derivatives
+\begin{align*}
+\hat y &= \sigma(W_2 \times \sigma(W_1 \times X)) \\[1em]
+\dfrac{\partial L}{\partial W_2} &=
+\dfrac{\hat y - y}{\hat y - \hat y^2}
+\cdot \hat y (1 - \hat y)
+\cdot \sigma(W_1 \times X)
+\end{align*}
+
+
+% Write out derivatives for W1
+\begin{align*}
+\dfrac{\partial L}{\partial W_1} &= \dfrac{\partial L}{\partial \sigma(W_2 \times \sigma(W_1 \times X))}
+\cdot \dfrac{\partial \sigma(W_2 \times \sigma(W_1 \times X))}{\partial W_2 \times \sigma(W_1 \times X)}
+\cdot \dfrac{\partial W_2 \times \sigma(W_1 \times X)}{\partial \sigma(W_1 \times X)}\\[1em]
+&\quad \cdot \dfrac{\partial \sigma(W_1 \times X)}{W_1 \times X}
+\cdot \dfrac{\partial W_1 \times X}{\partial W_1}
+\end{align*}
+
+% Compute W1 derivatives
+\begin{align*}
+\hat y &= \sigma(W_2 \times \sigma(W_1 \times X)) \\[1em]
+\dfrac{\partial L}{\partial W_1} &=
+\dfrac{\hat y - y}{\hat y - \hat y^2}
+\cdot \hat y (1 - \hat y)
+\cdot W_2
+\cdot \sigma(W_1 \times X)(1 - \sigma(W_1 \times X))
+\cdot X
+\end{align*}
+
+\end{document}
